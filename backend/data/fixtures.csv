@@ -1,0 +1,101 @@
+fixture_id	season	home_team	away_team	importance_band
+1	2019-20	Manchester United	Brentford	HIGH
+2	2019-20	Leeds	Everton	HIGH
+3	2019-20	Everton	Tottenham	MEDIUM
+4	2019-20	Arsenal	Leeds	LOW
+5	2019-20	Newcastle	Fulham	MEDIUM
+6	2019-20	West Ham	Arsenal	MEDIUM
+7	2019-20	Fulham	Tottenham	MEDIUM
+8	2019-20	Fulham	Crystal Palace	HIGH
+9	2019-20	Manchester City	West Ham	MEDIUM
+10	2019-20	West Ham	Leicester	LOW
+11	2019-20	Manchester City	Liverpool	LOW
+12	2019-20	Chelsea	Arsenal	MEDIUM
+13	2019-20	Wolves	Brentford	LOW
+14	2019-20	Leicester	Manchester City	LOW
+15	2019-20	Aston Villa	Brentford	LOW
+16	2019-20	Leeds	Leicester	MEDIUM
+17	2019-20	Arsenal	Fulham	LOW
+18	2019-20	Manchester City	Aston Villa	MEDIUM
+19	2019-20	Aston Villa	Liverpool	HIGH
+20	2019-20	Bournemouth	Tottenham	LOW
+21	2020-21	Tottenham	Everton	LOW
+22	2020-21	Liverpool	Manchester City	MEDIUM
+23	2020-21	Brentford	Everton	LOW
+24	2020-21	Liverpool	West Ham	MEDIUM
+25	2020-21	Arsenal	Wolves	MEDIUM
+26	2020-21	Fulham	Brighton	LOW
+27	2020-21	Aston Villa	Bournemouth	LOW
+28	2020-21	Manchester United	Aston Villa	LOW
+29	2020-21	Chelsea	Brentford	HIGH
+30	2020-21	Chelsea	Wolves	MEDIUM
+31	2020-21	Chelsea	Newcastle	LOW
+32	2020-21	Crystal Palace	Brentford	HIGH
+33	2020-21	Leeds	Wolves	HIGH
+34	2020-21	West Ham	Fulham	HIGH
+35	2020-21	Fulham	Manchester City	MEDIUM
+36	2020-21	Brighton	Leicester	HIGH
+37	2020-21	Leeds	West Ham	LOW
+38	2020-21	Manchester United	Brighton	LOW
+39	2020-21	Newcastle	Wolves	HIGH
+40	2020-21	Leeds	Chelsea	LOW
+41	2021-22	Leicester	Liverpool	MEDIUM
+42	2021-22	Bournemouth	Brighton	HIGH
+43	2021-22	Brentford	Arsenal	HIGH
+44	2021-22	Everton	Brentford	LOW
+45	2021-22	Aston Villa	Crystal Palace	LOW
+46	2021-22	Aston Villa	Tottenham	HIGH
+47	2021-22	Aston Villa	Fulham	HIGH
+48	2021-22	Aston Villa	Manchester United	HIGH
+49	2021-22	Everton	Manchester City	HIGH
+50	2021-22	Bournemouth	Manchester City	LOW
+51	2021-22	Everton	West Ham	MEDIUM
+52	2021-22	Bournemouth	Aston Villa	MEDIUM
+53	2021-22	Chelsea	Manchester United	HIGH
+54	2021-22	Leeds	Bournemouth	HIGH
+55	2021-22	Leeds	Crystal Palace	MEDIUM
+56	2021-22	West Ham	Arsenal	HIGH
+57	2021-22	Fulham	Manchester City	HIGH
+58	2021-22	Everton	Leicester	MEDIUM
+59	2021-22	Everton	West Ham	MEDIUM
+60	2021-22	Aston Villa	Manchester United	LOW
+61	2022-23	Manchester United	Leeds	LOW
+62	2022-23	Tottenham	Manchester United	HIGH
+63	2022-23	Newcastle	West Ham	MEDIUM
+64	2022-23	Fulham	Crystal Palace	MEDIUM
+65	2022-23	Everton	Bournemouth	MEDIUM
+66	2022-23	Aston Villa	Fulham	MEDIUM
+67	2022-23	Manchester United	Aston Villa	LOW
+68	2022-23	Crystal Palace	Newcastle	HIGH
+69	2022-23	Chelsea	Leeds	HIGH
+70	2022-23	West Ham	Brighton	LOW
+71	2022-23	West Ham	Newcastle	HIGH
+72	2022-23	Aston Villa	Leicester	LOW
+73	2022-23	Fulham	Brighton	MEDIUM
+74	2022-23	Manchester United	Leeds	LOW
+75	2022-23	West Ham	Brentford	MEDIUM
+76	2022-23	Manchester City	Everton	MEDIUM
+77	2022-23	Leicester	Leeds	LOW
+78	2022-23	Crystal Palace	Aston Villa	MEDIUM
+79	2022-23	Tottenham	Wolves	HIGH
+80	2022-23	Leeds	Liverpool	LOW
+81	2023-24	Wolves	Tottenham	LOW
+82	2023-24	Brighton	Arsenal	HIGH
+83	2023-24	Leicester	Newcastle	MEDIUM
+84	2023-24	Brighton	Crystal Palace	HIGH
+85	2023-24	Newcastle	Bournemouth	LOW
+86	2023-24	Leeds	Manchester City	LOW
+87	2023-24	Arsenal	Leeds	LOW
+88	2023-24	Aston Villa	Chelsea	LOW
+89	2023-24	Fulham	Aston Villa	HIGH
+90	2023-24	Manchester City	Liverpool	HIGH
+91	2023-24	Everton	Brighton	MEDIUM
+92	2023-24	Bournemouth	Liverpool	MEDIUM
+93	2023-24	Tottenham	Arsenal	MEDIUM
+94	2023-24	Tottenham	Brighton	MEDIUM
+95	2023-24	Manchester United	Bournemouth	HIGH
+96	2023-24	Tottenham	Wolves	MEDIUM
+97	2023-24	Arsenal	Liverpool	MEDIUM
+98	2023-24	Brentford	Fulham	MEDIUM
+99	2023-24	Leeds	Fulham	HIGH
+100	2023-24	Wolves	Everton	LOW

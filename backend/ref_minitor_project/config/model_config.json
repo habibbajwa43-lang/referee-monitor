@@ -1,0 +1,70 @@
+{
+  "project": "ref_monitor_project",
+  "model_version": "v2.4",
+  "score_version": "v2.4",
+  "generated_at": "AUTO_GENERATED",
+
+  "paths": {
+    "data_dir": "data",
+    "output_dir": "outputs",
+    "database": "database/ref_monitor_poc.db"
+  },
+
+  "data_files": {
+    "referees": "referees.csv",
+    "fixtures": "fixtures.csv",
+    "assignments": "referee_assignments.csv",
+    "events": "match_events.csv"
+  },
+
+  "outputs": {
+    "ref_profiles": "ref_profiles.csv",
+    "fixture_predictions": "fixture_predictions.csv",
+    "top_referees": "top_referees.csv",
+    "most_volatile_refs": "most_volatile_refs.csv",
+    "var_heavy_refs": "var_heavy_refs.csv"
+  },
+
+  "normalization": {
+    "min_score": 0,
+    "max_score": 100
+  },
+
+  "ref_monitor_score_weights": {
+    "strictness_index": 0.20,
+    "decision_volatility": 0.20,
+    "pressure_sensitivity": 0.15,
+    "fixture_context_alignment": 0.15,
+    "var_interaction_score": 0.10,
+    "referee_chaos_index": 0.15
+  },
+
+  "impact_score_weights": {
+    "card_intensity": 0.30,
+    "penalty_influence": 0.25,
+    "volatility": 0.25,
+    "var_interaction": 0.20
+  },
+
+  "chaos_index_weights": {
+    "cards_per_match": 0.30,
+    "red_cards_per_match": 0.25,
+    "penalties_per_match": 0.20,
+    "var_reviews_per_match": 0.15,
+    "decision_volatility": 0.10
+  },
+
+  "risk_bands": {
+    "high_quantile": 0.75,
+    "medium_quantile": 0.40
+  },
+
+  "impact_labels": {
+    "high": 70,
+    "medium": 40
+  },
+
+  "penalty_probability_model": {
+    "type": "poisson"
+  }
+}
