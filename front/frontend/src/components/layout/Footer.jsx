@@ -8,6 +8,7 @@ const footerSections = [
       { label: "Referees", path: "/referees", clickable: true },
       { label: "Matches", path: "/matches", clickable: true },
       { label: "Insights", path: "/insights", clickable: true },
+      { label: "Compare", path: "/compare", clickable: true },
     ],
   },
   {
