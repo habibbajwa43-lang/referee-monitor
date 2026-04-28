@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Download, Image, ChevronDown, Loader, Twitter } from "lucide-react";
 
+const API_URL = import.meta.env.VITE_API_URL || 'https://referee-monitor-production.up.railway.app';
+
 function roundRect(ctx, x, y, w, h, r, fill, stroke) {
   ctx.beginPath();
   ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y);
@@ -160,7 +162,8 @@ export default function GraphicGeneratorSection() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    fetch("/ref_profiles").then(r => r.json())
+    fetch(`${API_URL}/ref_profiles`)
+      .then(r => r.json())
       .then(data => { const list=Array.isArray(data)?data:[]; setRefs(list); if(list.length>0)setSelected(list[0]); })
       .catch(() => setRefs([]))
       .finally(() => setLoading(false));
