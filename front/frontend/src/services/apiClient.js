@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "https://referee-monitor-api.onrender.com",
+  baseURL: "https://referee-monitor-production.up.railway.app",
   timeout: 15000,
 });
 
