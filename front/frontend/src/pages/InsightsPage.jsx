@@ -60,7 +60,7 @@ export default function InsightsPage() {
           : "38%",
         type: "penalty",
         target: penaltyRef ? `/referees/${penaltyRef.referee_id}` : "/insights",
-        image: "/images/penalty-insight.jpeg",
+        image: "/images/chris-kavanagh.jpg",
       },
       {
         id: "chaos-alert",
@@ -77,7 +77,7 @@ export default function InsightsPage() {
           : "High",
         type: "chaos",
         target: chaosRef ? `/referees/${chaosRef.referee_id}` : "/insights",
-        image: "/images/chaos-insight.jpeg",
+        image: "/images/mike-dean.jpg",
       },
       {
         id: "strictness-trend",
@@ -92,7 +92,7 @@ export default function InsightsPage() {
           : "72",
         type: "strictness",
         target: topStrictRef ? `/referees/${topStrictRef.referee_id}` : "/insights",
-        image: "/images/strictness-insight.jpeg",
+        image: "/images/chris-kavanagh.jpg",
       },
       {
         id: "fixture-impact",
@@ -109,7 +109,7 @@ export default function InsightsPage() {
         target: highImpactFixture
           ? `/matches/${highImpactFixture.fixture_id}`
           : "/insights",
-        image: "/images/match-intensity.jpeg",
+        image: "/images/penalty-insight.jpeg",
       },
     ];
   }, [referees, fixtures]);

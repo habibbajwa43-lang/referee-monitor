@@ -15,8 +15,8 @@ export default function FeaturedInsightBanner({ insight }) {
   return (
     <div className="mb-8 overflow-hidden rounded-[32px] border border-white/6"
       style={{ background: "var(--surface)" }}>
-      <div className="grid items-stretch lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="p-8 flex flex-col justify-between">
+      <div className="grid lg:grid-cols-[1.1fr_0.9fr]" style={{ minHeight: "380px" }}>
+        <div className="p-8 flex flex-col justify-center">
           <div>
             <div className="flex items-center gap-3 mb-5">
               <span className="inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
@@ -40,23 +40,24 @@ export default function FeaturedInsightBanner({ insight }) {
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-500">
               {insight?.description || "Loading description..."}
             </p>
-          </div>
 
-          <button
-            onClick={() => navigate(insight?.target || "/insights")}
-            className="mt-8 inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5"
-            style={{ background: "linear-gradient(135deg, #062c22, #0a4a36)", border: "1px solid rgba(16,185,129,0.25)" }}>
-            View Full Report
-            <ArrowUpRight size={16} />
-          </button>
+            <button
+              onClick={() => navigate(insight?.target || "/insights")}
+              className="mt-8 inline-flex w-fit items-center gap-2 rounded-2xl px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(135deg, #062c22, #0a4a36)", border: "1px solid rgba(16,185,129,0.25)" }}>
+              View Full Report
+              <ArrowUpRight size={16} />
+            </button>
+          </div>
         </div>
 
         {/* Image with dark overlay */}
-        <div className="relative min-h-[280px] overflow-hidden">
+        <div className="relative overflow-hidden" style={{ minHeight: "280px" }}>
           <img
             src={insight?.image || "/images/penalty-insight.jpeg"}
             alt={insight?.title || "Insight"}
-            className="h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: "top center" }}
           />
           {/* Dark overlay */}
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(7,9,15,0.4), rgba(7,9,15,0.15))" }} />
