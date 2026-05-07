@@ -2,10 +2,10 @@ import { ArrowRight, Zap, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const statPills = [
-  { icon: "🔥", label: "Chaos Index™", value: "78", sub: "HIGH", color: "#f59e0b" },
-  { icon: "🎯", label: "Penalty Prob", value: "0.42", sub: "21 matches avg", color: "#10b981" },
-  { icon: "🟨", label: "Card Strictness", value: "4.8", sub: "Per game avg", color: "#eab308" },
-  { icon: "⚡", label: "Ref Impact Score", value: "82", sub: "HIGH", color: "#10b981" },
+  { icon: "🔥", label: "Chaos Index", value: "78", sub: "HIGH VOLATILITY", color: "#f59e0b" },
+  { icon: "🎯", label: "Penalty Risk", value: "42%", sub: "Historical avg", color: "#f43f5e" },
+  { icon: "🟨", label: "Strictness", value: "4.8", sub: "Cards per game", color: "#eab308" },
+  { icon: "⚡", label: "Ref Impact Score", value: "82", sub: "HIGH INFLUENCE", color: "#10b981" },
 ];
 
 export default function HeroSection() {
@@ -63,12 +63,12 @@ export default function HeroSection() {
 
         <p className="text-lg text-slate-400 leading-relaxed mb-2" style={{ maxWidth: 460 }}>
           Analyse referee behaviour, match context, and decision patterns.
-          Predict cards, penalties, and chaos risk —{" "}
-          <strong className="text-white">before kickoff.</strong>
+          Explore cards, penalties, and chaos risk —{" "}
+          <strong className="text-white">across 5+ seasons of data.</strong>
         </p>
 
-        <p className="text-xs tracking-[0.4em] text-slate-600 uppercase mb-8">
-          Generate shareable stat graphics for any referee
+        <p className="text-xs tracking-[0.3em] mb-8 font-bold uppercase" style={{ color: "#10b981" }}>
+          ✦ Generate shareable stat graphics for any referee
         </p>
 
         {/* Buttons */}
@@ -109,8 +109,8 @@ export default function HeroSection() {
         </div>
 
         {/* bottom label */}
-        <p className="mt-10 text-xs text-slate-700 tracking-widest uppercase">
-          Data updated weekly · Analysed across 5+ Premier League seasons
+        <p className="mt-10 text-xs tracking-widest uppercase font-semibold" style={{ color: "#10b981" }}>
+          ✦ Data updated weekly · Analysed across 5+ Premier League seasons
         </p>
       </div>
     </section>

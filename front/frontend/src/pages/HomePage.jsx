@@ -10,6 +10,7 @@ import MethodologyPreview from "../components/home/MethodologyPreview";
 import NewsletterSection from "../components/home/NewsletterSection";
 import AudienceSection from "../components/home/AudienceSection";
 import GraphicGeneratorSection from "../components/home/GraphicGeneratorSection";
+import HowItWorksSection from "../components/home/HowItWorksSection";
 
 export default function HomePage() {
   const referees = useSelector((state) => state.referee.list);
@@ -56,6 +57,7 @@ export default function HomePage() {
         hasRefData={homeData.hasRefData}
         hasFixtureData={homeData.hasFixtureData}
       />
+      <HowItWorksSection />
       <FeaturedMatchCard match={homeData.featuredMatch} loading={loading} hasFixtureData={homeData.hasFixtureData} />
       <RefereeProfilePreview referee={homeData.profileReferee} loading={loading} hasRefData={homeData.hasRefData} />
       <AudienceSection />

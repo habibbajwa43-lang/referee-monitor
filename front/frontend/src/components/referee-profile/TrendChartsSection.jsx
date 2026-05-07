@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import {
   LineChart, Line, BarChart, Bar,
-  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine,
 } from "recharts";
 
 const darkTooltip = {
@@ -41,7 +41,7 @@ export default function TrendChartsSection({ lineData, barData, varData, loading
   return (
     <div className="mt-6 space-y-6">
       <div className="grid gap-6 lg:grid-cols-2">
-        <ChartCard title="Cards per Match — Season Trend">
+        <ChartCard title="Cards per Game — Season Trend (League avg: 4.1)">
           <div className="h-64 w-full">
             {loading ? <div className="flex h-full items-center justify-center text-slate-600">Loading...</div> :
               lineData?.length ? (
@@ -50,10 +50,12 @@ export default function TrendChartsSection({ lineData, barData, varData, loading
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
                     <XAxis dataKey="season" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} />
                     <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} />
-                    <Tooltip {...darkTooltip} />
+                    <Tooltip {...darkTooltip} formatter={(v) => [`${Number(v).toFixed(1)} cards/game`, "This Referee"]} />
+                    <ReferenceLine y={4.1} stroke="rgba(148,163,184,0.3)" strokeDasharray="4 4"
+                      label={{ value: "PL Avg 4.1", fill: "#475569", fontSize: 10, position: "right" }} />
                     <Line type="monotone" dataKey="value" stroke="#10b981" strokeWidth={2.5}
                       dot={{ r: 4, fill: "#10b981", stroke: "#07090f", strokeWidth: 2 }}
-                      activeDot={{ r: 6 }} />
+                      activeDot={{ r: 6 }} name="Cards/Game" />
                   </LineChart>
                 </ResponsiveContainer>
               ) : placeholder}

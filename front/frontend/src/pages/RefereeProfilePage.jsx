@@ -127,32 +127,69 @@ export default function RefereeProfilePage() {
         { label: "Game Control", value: Math.min(100, pressure) },
         { label: "VAR Usage",    value: Math.min(100, varScore) },
       ],
-      statBreakdown: [
-        {
-          label: "Cards per Match",
-          value: (strictness / 20).toFixed(1),
-          badge: strictness >= 80 ? "HIGH" : strictness >= 50 ? "MED" : "LOW",
-          delta: "+12.4% vs avg",
-        },
-        {
-          label: "Penalties per Match",
-          value: (penaltyProb / 100).toFixed(2),
-          badge: penaltyProb >= 60 ? "HIGH" : penaltyProb >= 35 ? "MED" : "LOW",
-          delta: "+8.1% vs avg",
-        },
-        {
-          label: "VAR Interventions",
-          value: Math.round(varScore / 2.2),
-          badge: varScore >= 65 ? "HIGH" : varScore >= 40 ? "MED" : "LOW",
-          delta: "+16.7% vs avg",
-        },
-        {
-          label: "Fouls per Match",
-          value: (18 + strictness / 10).toFixed(1),
-          badge: "Medium",
-          delta: "+3.9% vs avg",
-        },
-      ],
+      statBreakdown: (() => {
+        // League averages (EPL baseline)
+        const leagueCardsPerGame = 4.1;
+        const leaguePenaltyRate  = 28;   // %
+        const leagueVarPerSeason = 22;   // interventions per season avg
+        const leagueFoulsPerGame = 21.4;
+
+        const cardsPerGame   = (strictness / 20);
+        const penaltyRatePct = penaltyProb;
+        const varCount       = Math.round(varScore / 2.2);
+        const foulsPerGame   = 18 + strictness / 10;
+
+        const cardsDiff   = (cardsPerGame - leagueCardsPerGame).toFixed(1);
+        const penaltyDiff = Math.abs(penaltyRatePct - leaguePenaltyRate).toFixed(0);
+        const varDiff     = Math.abs(varCount - leagueVarPerSeason);
+        const foulsDiff   = Math.abs(foulsPerGame - leagueFoulsPerGame).toFixed(1);
+
+        return [
+          {
+            label: "Cards per Game",
+            value: cardsPerGame.toFixed(1),
+            leagueAvg: `${leagueCardsPerGame} league avg`,
+            diff: `${Math.abs(cardsDiff)}`,
+            diffPositive: cardsPerGame > leagueCardsPerGame,
+            badge: strictness >= 80 ? "HIGH" : strictness >= 50 ? "MED" : "LOW",
+            tooltip: "strictness",
+            color: "#eab308",
+            barPct: (cardsPerGame / 8) * 100,
+          },
+          {
+            label: "Penalty Risk",
+            value: `${Math.round(penaltyRatePct)}%`,
+            leagueAvg: `${leaguePenaltyRate}% league avg`,
+            diff: `${penaltyDiff}%`,
+            diffPositive: penaltyRatePct > leaguePenaltyRate,
+            badge: penaltyRatePct >= 45 ? "HIGH" : penaltyRatePct >= 30 ? "MED" : "LOW",
+            tooltip: "penalty_risk",
+            color: "#f43f5e",
+            barPct: penaltyRatePct,
+          },
+          {
+            label: "VAR Interventions",
+            value: `${varCount}/season`,
+            leagueAvg: `${leagueVarPerSeason} league avg`,
+            diff: `${varDiff}`,
+            diffPositive: varCount > leagueVarPerSeason,
+            badge: varScore >= 65 ? "HIGH" : varScore >= 40 ? "MED" : "LOW",
+            tooltip: "var_heavy",
+            color: "#818cf8",
+            barPct: varScore,
+          },
+          {
+            label: "Fouls per Game",
+            value: foulsPerGame.toFixed(1),
+            leagueAvg: `${leagueFoulsPerGame} league avg`,
+            diff: `${foulsDiff}`,
+            diffPositive: foulsPerGame > leagueFoulsPerGame,
+            badge: foulsPerGame >= 24 ? "HIGH" : foulsPerGame >= 20 ? "MED" : "LOW",
+            color: "#94a3b8",
+            barPct: (foulsPerGame / 35) * 100,
+          },
+        ];
+      })(),
       lineData,
       barData,
       varData,

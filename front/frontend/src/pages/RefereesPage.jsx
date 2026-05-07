@@ -94,7 +94,7 @@ export default function RefereesPage() {
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-white/85">
             Explore how referee tendencies influence cards, penalties, and chaos
-            in upcoming fixtures.
+            across Premier League fixtures.
           </p>
 
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">

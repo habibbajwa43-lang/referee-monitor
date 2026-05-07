@@ -15,7 +15,7 @@ const cards = [
     img: "/images/fan.png",
     icon: Users,
     title: "For Fans",
-    desc: "Know what to expect before kickoff — will your match have a strict ref, penalty drama, or VAR chaos?",
+    desc: "Understand what to expect from any referee — will your match have a strict ref, penalty risk, or VAR chaos?",
     cta: "Explore Matches",
     path: "/matches",
     color: "#818cf8",

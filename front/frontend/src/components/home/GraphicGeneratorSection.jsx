@@ -246,12 +246,23 @@ export default function GraphicGeneratorSection() {
             </div>
             {stats && (
               <div className="rounded-xl p-4 space-y-2" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                {[{l:"RM Score",v:stats.rmScore,c:"#10b981"},{l:"Chaos",v:stats.chaos,c:"#f59e0b"},{l:"Penalty",v:stats.penalty,c:"#f43f5e"},{l:"Strictness",v:stats.strictness,c:"#eab308"},{l:"VAR",v:stats.varScore,c:"#818cf8"},{l:"Matches",v:stats.matches,c:"#94a3b8"}].map(s => (
+                <p className="text-[9px] font-bold uppercase tracking-widest text-slate-600 mb-3">Preview Stats</p>
+                {[
+                  {l:"Ref Impact Score",v:stats.rmScore,c:"#10b981"},
+                  {l:"Chaos Index",v:stats.chaos,c:"#f59e0b"},
+                  {l:"Penalty Risk",v:`${stats.penalty}%`,c:"#f43f5e"},
+                  {l:"Strictness",v:stats.strictness,c:"#eab308"},
+                  {l:"VAR Score",v:stats.varScore,c:"#818cf8"},
+                  {l:"Matches",v:stats.matches,c:"#94a3b8"},
+                ].map(s => (
                   <div key={s.l} className="flex justify-between">
                     <span className="text-xs text-slate-500">{s.l}</span>
                     <span className="text-xs font-bold font-mono" style={{ color: s.c }}>{s.v}</span>
                   </div>
                 ))}
+                <p className="text-[9px] text-slate-700 pt-2 border-t border-white/5">
+                  Ref Impact Score = match influence, not quality
+                </p>
               </div>
             )}
             <button onClick={generate} disabled={!selected||loading}

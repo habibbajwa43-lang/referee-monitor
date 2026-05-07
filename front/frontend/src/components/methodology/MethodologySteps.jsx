@@ -8,7 +8,7 @@ const steps = [
   },
   {
     title: "Cleaning & Validation",
-    text: "Data is validated, normalized, and transformed into consistent analytics-ready signals.",
+    text: "Data is validated, normalised, and transformed into consistent analytics-ready signals.",
     icon: Filter,
   },
   {
@@ -18,7 +18,7 @@ const steps = [
   },
   {
     title: "Fixture Prediction Layer",
-    text: "Referee metrics are blended into match-level impact signals and risk bands for upcoming fixtures.",
+    text: "Referee metrics are blended into match-level impact signals and risk bands based on historical fixture data.",
     icon: ShieldCheck,
   },
 ];
