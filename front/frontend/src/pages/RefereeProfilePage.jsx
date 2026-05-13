@@ -146,7 +146,7 @@ export default function RefereeProfilePage() {
 
         return [
           {
-            label: "Cards per Game",
+            label: "Cards per Match",
             value: cardsPerGame.toFixed(1),
             leagueAvg: `${leagueCardsPerGame} league avg`,
             diff: `${Math.abs(cardsDiff)}`,
@@ -157,7 +157,7 @@ export default function RefereeProfilePage() {
             barPct: (cardsPerGame / 8) * 100,
           },
           {
-            label: "Penalty Risk",
+            label: "Penalty Alert",
             value: `${Math.round(penaltyRatePct)}%`,
             leagueAvg: `${leaguePenaltyRate}% league avg`,
             diff: `${penaltyDiff}%`,
@@ -168,7 +168,7 @@ export default function RefereeProfilePage() {
             barPct: penaltyRatePct,
           },
           {
-            label: "VAR Interventions",
+            label: "High VAR Intervention Risk",
             value: `${varCount}/season`,
             leagueAvg: `${leagueVarPerSeason} league avg`,
             diff: `${varDiff}`,
@@ -179,7 +179,7 @@ export default function RefereeProfilePage() {
             barPct: varScore,
           },
           {
-            label: "Fouls per Game",
+            label: "Foul Frequency",
             value: foulsPerGame.toFixed(1),
             leagueAvg: `${leagueFoulsPerGame} league avg`,
             diff: `${foulsDiff}`,
@@ -211,7 +211,7 @@ export default function RefereeProfilePage() {
     <div className="">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <ProfileHeroCard hero={pageData.hero} loading={isLoading} />
-        <RefStyleBanner text={pageData.styleText} loading={isLoading} />
+        <RefStyleBanner text={pageData.styleText} loading={isLoading} hero={pageData.hero} />
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <PerformanceMetricsCard

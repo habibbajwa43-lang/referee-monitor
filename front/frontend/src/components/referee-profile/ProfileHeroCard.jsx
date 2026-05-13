@@ -5,13 +5,15 @@ import { refereeImages, fallbackRefereeImage } from "../../utils/refreeImages";
 import StatGraphicGenerator from "./StatGraphicGenerator";
 import MetricTooltip from "../shared/MetricTooltip";
 import { getRefereeStatus, getStatusStyle } from "../../utils/refereeStatus";
+import { getRefereeArchetype, getMetricLabel } from "../../utils/refereeIntelligence";
 
 export default function ProfileHeroCard({ hero, loading }) {
   const navigate = useNavigate();
   const [showGraphic, setShowGraphic] = useState(false);
 
-  const status = hero?.name ? getRefereeStatus(hero.name) : "Active";
+  const status      = hero?.name ? getRefereeStatus(hero.name) : "Active";
   const statusStyle = getStatusStyle(status);
+  const archetype   = hero ? getRefereeArchetype(hero) : null;
 
   const statCards = [
     {
@@ -23,7 +25,7 @@ export default function ProfileHeroCard({ hero, loading }) {
       tooltip: null,
     },
     {
-      label: "Cards / Match",
+      label: getMetricLabel("Cards per Game"),
       value: hero ? (hero.strictness / 20).toFixed(1) : "--",
       icon: Tickets,
       color: "text-yellow-400",
@@ -32,7 +34,7 @@ export default function ProfileHeroCard({ hero, loading }) {
       leagueAvg: "4.1 league avg",
     },
     {
-      label: "Penalty Risk",
+      label: getMetricLabel("Penalty Alert"),
       value: hero ? `${Math.round(hero.penaltyProb)}%` : "--",
       icon: Percent,
       color: "text-rose-400",
@@ -41,7 +43,7 @@ export default function ProfileHeroCard({ hero, loading }) {
       leagueAvg: "28% league avg",
     },
     {
-      label: "VAR Involvement",
+      label: getMetricLabel("High VAR Intervention Risk"),
       value: hero ? Math.round(hero.varScore / 2.2) : "--",
       icon: GitBranch,
       color: "text-blue-400",
@@ -67,17 +69,14 @@ export default function ProfileHeroCard({ hero, loading }) {
         Back to Referees
       </button>
 
-      <div
-        className="rounded-[24px] p-6"
-        style={{ background: "var(--surface)", border: "1px solid rgba(255,255,255,0.07)" }}
-      >
+      <div className="rounded-[24px] p-6"
+        style={{ background: "var(--surface)", border: "1px solid rgba(255,255,255,0.07)" }}>
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+
           {/* Avatar + info */}
           <div className="flex gap-4 items-start">
-            <div
-              className="h-20 w-20 overflow-hidden rounded-full flex-shrink-0 relative"
-              style={{ border: "2px solid rgba(16,185,129,0.4)" }}
-            >
+            <div className="h-20 w-20 overflow-hidden rounded-full flex-shrink-0 relative"
+              style={{ border: "2px solid rgba(16,185,129,0.4)" }}>
               <img
                 src={refereeImages[hero?.id] || fallbackRefereeImage}
                 alt={hero?.name || "Referee"}
@@ -89,41 +88,47 @@ export default function ProfileHeroCard({ hero, loading }) {
               <h1 className="font-display text-5xl font-black text-white uppercase">
                 {loading ? "Loading..." : hero?.name || "Referee Profile"}
               </h1>
-              <p className="mt-1 text-sm text-slate-500">
-                Historical Analytics &amp; Season Trends
-              </p>
+              <p className="mt-1 text-sm text-slate-500">Historical Analytics &amp; Season Trends</p>
+
               <div className="mt-3 flex flex-wrap gap-2 items-center">
-                {/* Status badge */}
-                <span
-                  className="rounded-full px-3 py-1 text-xs font-bold"
-                  style={{
-                    background: statusStyle.bg,
-                    color: statusStyle.color,
-                    border: `1px solid ${statusStyle.border}`,
-                  }}
-                >
+                <span className="rounded-full px-3 py-1 text-xs font-bold"
+                  style={{ background: statusStyle.bg, color: statusStyle.color, border: `1px solid ${statusStyle.border}` }}>
                   {status === "Active" ? "● " : status === "Retired" ? "◌ " : "⚡ "}{status}
                 </span>
-                <span className="rounded-full px-3 py-1 text-xs font-bold text-slate-300"
-                  style={{ background: "rgba(255,255,255,0.06)" }}>
-                  {hero?.style || "Standard"}
-                </span>
+
+                {/* Archetype badge — most prominent personality tag */}
+                {archetype && (
+                  <span className="rounded-full px-3 py-1 text-xs font-bold flex items-center gap-1.5"
+                    style={{
+                      color: archetype.color,
+                      background: `${archetype.color}18`,
+                      border: `1px solid ${archetype.color}44`,
+                    }}>
+                    <span>{archetype.icon}</span>
+                    {archetype.name}
+                  </span>
+                )}
+
                 <span className="rounded-full px-3 py-1 text-xs font-bold text-slate-300"
                   style={{ background: "rgba(255,255,255,0.06)" }}>
                   {hero?.country || "Unknown"}
                 </span>
-                {/* RM Score badge with tooltip */}
                 <MetricTooltip metric="rm_score">
-                  <span
-                    className="rounded-full px-3 py-1 text-xs font-bold text-emerald-400"
-                    style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.2)" }}
-                  >
-                    Ref Impact: {hero ? hero.rmScore?.toFixed(1) : "--"}
+                  <span className="rounded-full px-3 py-1 text-xs font-bold text-emerald-400"
+                    style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.2)" }}>
+                    Ref Intelligence Score: {hero ? hero.rmScore?.toFixed(1) : "--"}
                   </span>
                 </MetricTooltip>
               </div>
 
-              {/* Retired notice */}
+              {/* Archetype description */}
+              {archetype && (
+                <p className="mt-2 text-xs text-slate-500 max-w-md leading-relaxed"
+                  style={{ borderLeft: `2px solid ${archetype.color}44`, paddingLeft: 8 }}>
+                  {archetype.desc}
+                </p>
+              )}
+
               {status === "Retired" && (
                 <p className="mt-2 text-xs text-slate-500 flex items-center gap-1">
                   <span style={{ color: "#94a3b8" }}>◌</span>
@@ -133,12 +138,11 @@ export default function ProfileHeroCard({ hero, loading }) {
             </div>
           </div>
 
-          {/* Generate Graphic Button */}
+          {/* Generate Graphic */}
           <button
             onClick={() => setShowGraphic(true)}
             className="flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-emerald-400 transition hover:bg-emerald-400/10 flex-shrink-0"
-            style={{ border: "1px solid rgba(16,185,129,0.3)" }}
-          >
+            style={{ border: "1px solid rgba(16,185,129,0.3)" }}>
             <Image size={15} />
             Generate Stat Graphic
           </button>
@@ -149,31 +153,22 @@ export default function ProfileHeroCard({ hero, loading }) {
           {statCards.map((item) => {
             const Icon = item.icon;
             return (
-              <div
-                key={item.label}
-                className="rounded-[16px] p-4"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}
-              >
+              <div key={item.label} className="rounded-[16px] p-4"
+                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
                 <div className="mb-3 flex items-center gap-2">
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg" style={{ background: item.bg }}>
                     <Icon size={14} className={item.color} />
                   </div>
                   {item.tooltip ? (
                     <MetricTooltip metric={item.tooltip}>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                        {item.label}
-                      </span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{item.label}</span>
                     </MetricTooltip>
                   ) : (
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                      {item.label}
-                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{item.label}</span>
                   )}
                 </div>
                 <p className="font-display text-3xl font-black text-white">{item.value}</p>
-                {item.leagueAvg && (
-                  <p className="text-[10px] text-slate-600 mt-1">{item.leagueAvg}</p>
-                )}
+                {item.leagueAvg && <p className="text-[10px] text-slate-600 mt-1">{item.leagueAvg}</p>}
               </div>
             );
           })}

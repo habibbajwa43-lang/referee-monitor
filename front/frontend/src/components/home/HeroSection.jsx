@@ -1,11 +1,12 @@
-import { ArrowRight, Zap, Target } from "lucide-react";
+import { ArrowRight, Zap, Target, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+// Renamed to human-readable actionable labels
 const statPills = [
-  { icon: "🔥", label: "Chaos Index", value: "78", sub: "HIGH VOLATILITY", color: "#f59e0b" },
-  { icon: "🎯", label: "Penalty Risk", value: "42%", sub: "Historical avg", color: "#f43f5e" },
-  { icon: "🟨", label: "Strictness", value: "4.8", sub: "Cards per game", color: "#eab308" },
-  { icon: "⚡", label: "Ref Impact Score", value: "82", sub: "HIGH INFLUENCE", color: "#10b981" },
+  { icon: "🔥", label: "Chaos Index",              value: "78",  sub: "HIGH DISRUPTION",     color: "#f59e0b" },
+  { icon: "⚽", label: "Penalty Alert",             value: "42%", sub: "Above league average", color: "#f43f5e" },
+  { icon: "🟨", label: "Card Aggression",           value: "4.8", sub: "Cards per match",      color: "#eab308" },
+  { icon: "⚡", label: "Ref Intelligence Score",    value: "82",  sub: "HIGH INFLUENCE",       color: "#10b981" },
 ];
 
 export default function HeroSection() {
@@ -14,7 +15,7 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden" style={{ minHeight: "100vh", background: "#07090f" }}>
 
-      {/* Full background image — right side fade */}
+      {/* Full background image */}
       <div className="absolute inset-0">
         <img
           src="/images/hero.png"
@@ -22,15 +23,12 @@ export default function HeroSection() {
           className="absolute right-0 top-0 h-full w-[65%] object-cover object-top"
           style={{ opacity: 0.55 }}
         />
-        {/* Left dark fade so text is readable */}
         <div className="absolute inset-0" style={{
           background: "linear-gradient(90deg, #07090f 38%, rgba(7,9,15,0.75) 60%, rgba(7,9,15,0.15) 100%)"
         }} />
-        {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-40" style={{
           background: "linear-gradient(to top, #07090f, transparent)"
         }} />
-        {/* Green tint overlay */}
         <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse 50% 60% at 75% 50%, rgba(16,185,129,0.08), transparent)"
         }} />
@@ -45,50 +43,47 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 flex flex-col justify-center" style={{ minHeight: "100vh" }}>
 
-        {/* Badge */}
+        {/* Live badge */}
         <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8 w-fit"
           style={{ background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.25)" }}>
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-live" />
           <span className="text-xs font-bold tracking-widest text-emerald-400 uppercase">
-            5+ Seasons of Premier League Data
+            Pre-Match Football Intelligence Engine
           </span>
         </div>
 
         {/* Headline */}
         <h1 className="font-display font-black uppercase text-white mb-6"
           style={{ fontSize: "clamp(52px, 7.5vw, 110px)", lineHeight: 0.88, letterSpacing: "-0.01em", maxWidth: 700 }}>
-          Predict<br />Referee<br />
-          <span style={{ color: "#10b981", WebkitTextStroke: "0px" }}>Impact.</span>
+          Referee<br />Intelligence.<br />
+          <span style={{ color: "#10b981" }}>Delivered.</span>
         </h1>
 
-        <p className="text-lg text-slate-400 leading-relaxed mb-2" style={{ maxWidth: 460 }}>
-          Analyse referee behaviour, match context, and decision patterns.
-          Explore cards, penalties, and chaos risk —{" "}
-          <strong className="text-white">across 5+ seasons of data.</strong>
+        <p className="text-lg text-slate-400 leading-relaxed mb-2" style={{ maxWidth: 480 }}>
+          Know what's happening this weekend — chaos alerts, penalty watch, FPL signals, and referee archetypes.{" "}
+          <strong className="text-white">5+ seasons of Premier League data.</strong>
         </p>
 
         <p className="text-xs tracking-[0.3em] mb-8 font-bold uppercase" style={{ color: "#10b981" }}>
-          ✦ Generate shareable stat graphics for any referee
+          ✦ Not just stats. Actionable pre-match intelligence.
         </p>
 
-        {/* Buttons */}
+        {/* CTA buttons */}
         <div className="flex flex-wrap gap-3 mb-12">
           <button
             onClick={() => navigate("/matches")}
-            className="btn-accent flex items-center gap-2 px-7 py-4 text-sm font-bold uppercase tracking-wider"
-          >
-            <Zap size={15} /> View Chaos Fixtures <ArrowRight size={15} />
+            className="btn-accent flex items-center gap-2 px-7 py-4 text-sm font-bold uppercase tracking-wider">
+            <Zap size={15} /> This Weekend's Chaos Alerts <ArrowRight size={15} />
           </button>
           <button
             onClick={() => navigate("/referees")}
             className="flex items-center gap-2 px-7 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all hover:bg-white/5"
-            style={{ border: "1px solid rgba(255,255,255,0.15)", color: "#94a3b8" }}
-          >
-            <Target size={15} /> Explore Referees
+            style={{ border: "1px solid rgba(255,255,255,0.15)", color: "#94a3b8" }}>
+            <Target size={15} /> Referee Archetypes
           </button>
         </div>
 
-        {/* Stat pills — horizontal row */}
+        {/* Stat pills */}
         <div className="flex flex-wrap gap-3">
           {statPills.map((s) => (
             <div key={s.label} className="rounded-2xl px-5 py-4 flex items-center gap-4"
@@ -96,7 +91,7 @@ export default function HeroSection() {
                 background: "rgba(14,18,25,0.85)",
                 border: "1px solid rgba(255,255,255,0.08)",
                 backdropFilter: "blur(12px)",
-                minWidth: 160
+                minWidth: 160,
               }}>
               <span className="text-2xl">{s.icon}</span>
               <div>
@@ -108,7 +103,6 @@ export default function HeroSection() {
           ))}
         </div>
 
-        {/* bottom label */}
         <p className="mt-10 text-xs tracking-widest uppercase font-semibold" style={{ color: "#10b981" }}>
           ✦ Data updated weekly · Analysed across 5+ Premier League seasons
         </p>
